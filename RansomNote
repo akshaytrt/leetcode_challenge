@@ -1,0 +1,18 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        if len(magazine) < len(ransomNote): return False
+        tracking_map={}
+        
+        for ransom_char in ransomNote:
+            if ransom_char not in magazine: return False
+            if ransom_char in magazine and ransom_char not in tracking_map:
+                tracking_map[ransom_char] = magazine.count(ransom_char) - 1
+                continue
+            if ransom_char in magazine and ransom_char in tracking_map and tracking_map[ransom_char] != 0:
+                tracking_map[ransom_char] -= 1
+                continue
+            if ransom_char in magazine and ransom_char in tracking_map and tracking_map[ransom_char] == 0:
+                return False
+            
+        return True
+        
