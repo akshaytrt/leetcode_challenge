@@ -1,0 +1,10 @@
+import math
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        if num==1:
+            return True
+        x=math.sqrt(num)
+        if int(x + 0.5) ** 2 == num:
+             return True
+        else:
+            False
